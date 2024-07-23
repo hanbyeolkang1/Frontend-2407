@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>디지털 시계(그래픽 버전)</title>
+    <script>
+      function twoDigit(num) {
+        return num < 10 ? "0" + num : String(num); // 4 --> '04', 15 --> '15'
+      }
+      window.onload = () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const yoil = now.getDay(); // 0 ~ 6, 일 ~ 토
+        const dateStr = `${year}-${twoDigit(month)}-${twoDigit(day)}(${yoil})`;
+        document.getElementById("date").innerHtml = dateStr;
+      };
+    </script>
+  </head>
+  <body style="margin: 40px">
+    <h1 id="date"></h1>
+  </body>
+</html>
