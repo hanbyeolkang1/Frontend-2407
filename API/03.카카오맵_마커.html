@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>안전한 카카오 맵</title>
+    <title>카카오 맵 Maker</title>
     <!-- <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=4409456023a93333b25cd6b458110203"></script> -->
     <script src="key.js"></script>
     <script>
@@ -19,11 +19,18 @@
       };
       function initializeMap() {
         let container = document.getElementById("map");
+        let position = new kakao.mpas.LatLng(33.450701, 126.570667);
         let options = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667),
+          center: position,
           level: 3,
         };
         let map = new kakao.maps.Map(container, options);
+
+        // 마커 생성
+        var marker = new kakao.maps.Marker({
+          map: map,
+          position: position, // position 으로 해도 됨
+        });
       }
     </script>
   </head>
