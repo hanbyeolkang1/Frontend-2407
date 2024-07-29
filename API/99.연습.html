@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaflet Example</title>
+    <meta charset="utf-8" />
+    <style>
+      #map {
+        height: 500px;
+        width: 100%;
+      }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        // 임의의 장소 좌표 (위도, 경도)
+        var location = [37.7749, -122.4194]; // San Francisco 예시
+
+        // 지도 생성
+        var map = L.map("map").setView(location, 13);
+
+        // OpenStreetMap 타일 레이어 추가
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // 마커 추가
+        L.marker(location).addTo(map).bindPopup("임의의 장소").openPopup();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>도로명주소 API + 카카오로컬 API + 지도</h1>
+    <hr />
+    <h3>수원시청</h3>
+    <ul>
+      <li>도로명주소: <span id="place"></span></li>
+      <li>위도: <span id="lat"></span></li>
+      <li>경도: <span id="lon"></span></li>
+    </ul>
+    <div id="map" style="width: 600px; height: 400px; margin-top: 20px"></div>
+  </body>
+</html>
